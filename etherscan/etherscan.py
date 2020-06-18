@@ -281,3 +281,18 @@ class Client():
         self._params['boolean'] = True
 
         return self.__proxy_req()
+
+    def get_token_supply(self, contractaddress):
+        """Get ERC20-Token TotalSupply by ContractAddress"""
+        self._params['module'] = 'stats'
+        self._params['action'] = 'tokensupply'
+        self._params['contractaddress'] = contractaddress
+
+        return self.__req()
+
+    def get_contract_abi(self, contractaddress):
+        self._params['module'] = 'contract'
+        self._params['action'] = 'getabi'
+        self._params['address'] = contractaddress
+
+        return self.__req()
